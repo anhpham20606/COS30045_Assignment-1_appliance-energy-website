@@ -76,4 +76,4 @@ The dataset describes products (brands, models, energy figures), not people. It 
 - The data is open government data, cited with its source.
 
 ## AI Declaration
-Generative AI was used to help draft the website structure, CSS, JavaScript, analysis, storyboard and text. I reviewed and edited the output, checked figures against the KNIME results and take responsibility for the final content.
+Generative AI was used to help draft the website structure, CSS, JavaScript. I reviewed and edited the output, checked figures against the KNIME results and take responsibility for the final content.
