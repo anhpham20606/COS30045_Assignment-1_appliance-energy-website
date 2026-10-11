@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Storyboard | Appliance Energy Consumption Website</title>
+  <link rel="icon" type="image/png" href="assets/img/PowerIcon.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="logo" href="index.html" aria-label="Appliance Energy Consumption - Home"><img src="assets/img/PowerIcon.png" alt="Power logo"></a>
+    <ul>
+      <li><a class="nav-link" href="index.html">Home</a></li>
+      <li><a class="nav-link" href="televisions.html">Televisions</a></li>
+      <li><a class="nav-link" href="storyboard.html" aria-current="page">Storyboard</a></li>
+      <li><a class="nav-link" href="about.html">About Us</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+<section class="hero">
+  <h1>Storyboard</h1>
+  <p>Who the story is for, what they want to know, and how the website walks them from question to answer.</p>
+</section>
+
+<h2>Audience</h2>
+<div class="grid">
+  <div class="box"><h3>Who</h3><p>Australian households about to buy a TV. Not data experts; they know the energy label but not how screen technology affects it.</p></div>
+  <div class="box"><h3>What they want to know</h3><p>Will an OLED or LED LCD cost more to run than an LCD? Is it the technology, or something else? What should I compare?</p></div>
+  <div class="box"><h3>How they read</h3><p>Quickly, often on a phone or laptop. They need one clear message per chart and plain-English text.</p></div>
+</div>
+
+<h2>Guidelines for the story</h2>
+<ul>
+  <li>One message per chart, with an insight sentence underneath.</li>
+  <li>Show the unfair raw comparison first, then correct for screen size.</li>
+  <li>Keep one colour per technology across all charts.</li>
+  <li>Flag small groups and limits of the data honestly.</li>
+  <li>End with a simple action: pick a size, then compare kWh per year.</li>
+</ul>
+
+<h2>User journey</h2>
+
+<div class="scene">
+  <div class="frame"><img src="assets/img/PowerIcon.png" alt="Power logo used on the home page" style="max-width:120px"></div>
+  <div class="body">
+    <h3>Scene 1: Hook (Home page)</h3>
+    <dl>
+      <dt>Reader question</dt><dd>Does the type of TV change my power bill?</dd>
+      <dt>Content</dt><dd>Hero question, three key numbers (4,839 models, 296 to 422 kWh, about 4%), FAQ.</dd>
+      <dt>Design choice</dt><dd>Show the surprising contrast (big raw gap, tiny real gap) as numbers before any chart.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="scene">
+  <div class="frame"><img src="assets/img/charts/tech-0-count.png" alt="Bar chart of models by screen technology"></div>
+  <div class="body">
+    <h3>Scene 2: Setup (Figure 2)</h3>
+    <dl>
+      <dt>Reader question</dt><dd>What is actually on sale?</dd>
+      <dt>Content</dt><dd>Bar chart of model counts. LCD (LED) is 81% of the market.</dd>
+      <dt>Design choice</dt><dd>Simple bar chart; sorted, labelled directly, so no explanation is needed.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="scene">
+  <div class="frame"><img src="assets/img/charts/tech-1-energy.png" alt="Box plot of annual energy use by screen technology"></div>
+  <div class="body">
+    <h3>Scene 3: Conflict (Figure 3 and table)</h3>
+    <dl>
+      <dt>Reader question</dt><dd>Is LCD cheaper to run?</dd>
+      <dt>Content</dt><dd>Box plot of kWh per year. LCD median 296 against 408 and 422. Table reveals LCD TVs are 14 inches smaller on average.</dd>
+      <dt>Design choice</dt><dd>Let the reader believe the obvious answer first, then break it with the size column.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="scene">
+  <div class="frame"><img src="assets/img/charts/tech-2-per-area.png" alt="Bar chart of median kWh per 100 square centimetres"></div>
+  <div class="body">
+    <h3>Scene 4: Twist (Figure 4)</h3>
+    <dl>
+      <dt>Reader question</dt><dd>What if the screens were the same size?</dd>
+      <dt>Content</dt><dd>Median kWh per 100 cm²: 4.11, 4.16 and 4.00. The gap shrinks to about 4%.</dd>
+      <dt>Design choice</dt><dd>Same chart type as the earlier one, so the change in the result is easy to see.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="scene">
+  <div class="frame" style="flex-direction:column;gap:.75rem"><img src="assets/img/charts/tech-3-same-size.png" alt="Grouped bar chart by size band and technology"><img src="assets/img/charts/tech-4-power.png" alt="Box plot of in-use power by screen technology"><img src="assets/img/charts/tech-5-stars.png" alt="Bar chart of share of models with 5 stars or more"></div>
+  <div class="body">
+    <h3>Scene 5: Proof and caution (Figures 5 to 7)</h3>
+    <dl>
+      <dt>Reader question</dt><dd>Does it hold in real size ranges, in use, and for stars?</dd>
+      <dt>Content</dt><dd>Size-band comparison, in-use power and star share. Technologies are close except at very large sizes.</dd>
+      <dt>Design choice</dt><dd>Warn about small groups so the reader does not over-trust sparse bars.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="scene">
+  <div class="frame"></div>
+  <div class="body">
+    <h3>Scene 6: Call to action (Conclusion)</h3>
+    <dl>
+      <dt>Reader question</dt><dd>So what should I do?</dd>
+      <dt>Content</dt><dd>Pick the size you need, then compare kWh per year on the label for models of that size.</dd>
+      <dt>Design choice</dt><dd>One short, bold paragraph; no new numbers.</dd>
+    </dl>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="inner">
+    <p>&copy; <span id="year">2026</span> Pham Anh &ndash; COS30045 Data Visualisation, Swinburne Vietnam.</p>
+    <p>Generative AI acknowledgement: AI was used to help draft the website structure, code, analysis and text. All content was reviewed Pham Anh.</p>
+  </div>
+</footer>
+</body>
+</html>

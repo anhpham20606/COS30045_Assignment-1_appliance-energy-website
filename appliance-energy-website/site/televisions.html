@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Televisions | Appliance Energy Consumption Website</title>
+  <link rel="icon" type="image/png" href="assets/img/PowerIcon.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo" href="index.html" aria-label="Appliance Energy Consumption - Home"><img
+          src="assets/img/PowerIcon.png" alt="Power logo"></a>
+      <ul>
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="televisions.html" aria-current="page">Televisions</a></li>
+        <li><a class="nav-link" href="about.html">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <h1>Televisions</h1>
+      <p>Does the screen technology (LCD, LCD (LED) or OLED) change how much electricity a TV uses? This page looks only
+        at TVs currently available on the Australian market.</p>
+    </section>
+
+    <nav aria-label="On this page">
+      <p><a href="#cleaning">Data cleaning</a> &middot; <a href="#analysis">Analysis</a> &middot; <a
+          href="#conclusion">Conclusion</a></p>
+    </nav>
+
+    <h2 id="cleaning">Data cleaning</h2>
+    <p>The dataset lists 5,030 TV models registered under the Australian energy rating scheme (32 columns). The question
+      is about televisions on sale in Australia today, so the data was cleaned in KNIME as follows.</p>
+    <ol class="steps">
+      <li><strong>CSV Reader:</strong> load tv_2026_10_02.csv and check the column types.</li>
+      <li><strong>Row Filter:</strong> keep only Availability Status = Available (removes 11 models that are no longer
+        available).</li>
+      <li><strong>Row Filter:</strong> keep only models whose SoldIn contains &ldquo;Australia&rdquo; (removes 180
+        models sold only in New Zealand or Fiji and New Zealand).</li>
+      <li><strong>Column Filter:</strong> keep Brand_Reg, Model_No, screensize, Screen_Area, Screen_Tech,
+        Avg_mode_power, Star2 and Labelled energy consumption (kWh/year). Drop URLs, image links and other unused
+        columns.</li>
+      <li><strong>Quality checks:</strong> Screen_Tech has only three consistent values (LCD, LCD (LED), OLED) and there
+        are no missing energy values. SubmitStatus is &ldquo;Approved&rdquo; for every row.</li>
+      <li><strong>Math Formula:</strong> create <em>kwh_per_100cm2</em> = kWh per year / Screen_Area &times; 100, so
+        technologies can be compared without bigger screens dominating the result. Also create <em>size_inch</em> =
+        screensize / 2.54.</li>
+      <li><strong>Rule Engine:</strong> create <em>size_band</em> (&le;32, 33&ndash;43, 44&ndash;55, 56&ndash;65,
+        66&ndash;75, 76&ndash;100, &gt;100 inches) so TVs of similar size can be compared, and <em>stars_5plus</em>
+        (Star2 &ge; 5).</li>
+    </ol>
+    <p class="note">Result: <strong>4,839 models</strong> (3,940 LCD (LED), 607 LCD, 292 OLED). 228 rows share a brand
+      and model number with another row; they are kept as separate registrations.</p>
+
+    <figure class="chart">
+      <div class="chart-slot" id="chart-workflow"><img src="assets/img/charts/knime-workflow.png"
+          alt="KNIME workflow: CSV Reader, two Row Filters, Column Filter, Expression, two Rule Engines, then GroupBy, Pivot, Box Plot and Bar Chart branches">
+      </div>
+      <figcaption>Figure 1. KNIME workflow used to prepare and clean the dataset.</figcaption>
+    </figure>
+
+
+    <h2 id="analysis">Analysis: energy use by screen technology</h2>
+
+    <div class="question">
+      <h3><span class="tag">1</span>Which screen technologies are on the market?</h3>
+      <figure class="chart">
+        <div class="chart-slot"><img src="assets/img/charts/tech-0-count.png"
+            alt="Bar chart of the number of models for LCD, LCD (LED) and OLED"></div>
+        <figcaption>Figure 2. Number of TV models by screen technology.</figcaption>
+      </figure>
+      <p class="insight">LCD (LED) dominates with 3,940 of 4,839 models (81%). LCD has 607 (13%) and OLED 292 (6%).</p>
+    </div>
+    <div class="question">
+      <h3><span class="tag">2</span>How much energy does each screen technology use?</h3>
+      <figure class="chart">
+        <div class="chart-slot"><img src="assets/img/charts/tech-1-energy.png"
+            alt="Box plot of annual energy use for LCD, LCD (LED) and OLED televisions"></div>
+        <figcaption>Figure 3. Annual energy consumption (kWh/year) by screen technology.</figcaption>
+      </figure>
+      <p class="insight">At first glance LCD looks cheapest to run: median 296 kWh per year, against 408 for LCD (LED)
+        and 422 for OLED.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>Screen technology</th>
+          <th>Models</th>
+          <th>Median kWh/year</th>
+          <th>Average kWh/year</th>
+          <th>Average screen size</th>
+        </tr>
+        <tr>
+          <td>LCD</td>
+          <td>607</td>
+          <td>296</td>
+          <td>350</td>
+          <td>51 inches</td>
+        </tr>
+        <tr>
+          <td>LCD (LED)</td>
+          <td>3,940</td>
+          <td>408</td>
+          <td>462</td>
+          <td>60 inches</td>
+        </tr>
+        <tr>
+          <td>OLED</td>
+          <td>292</td>
+          <td>422</td>
+          <td>486</td>
+          <td>65 inches</td>
+        </tr>
+      </table>
+    </div>
+    <p>The last column explains the gap: the average LCD TV is about 14 inches smaller than the average OLED, so the raw
+      comparison is not fair.</p>
+    <div class="question">
+      <h3><span class="tag">3</span>Is the difference still there once screen size is removed?</h3>
+      <figure class="chart">
+        <div class="chart-slot"><img src="assets/img/charts/tech-2-per-area.png"
+            alt="Bar chart of median kWh per year per 100 square centimetres of screen for each technology"></div>
+        <figcaption>Figure 4. Median energy use per 100 cm&sup2; of screen, by technology.</figcaption>
+      </figure>
+      <p class="insight">Per unit of screen area the three technologies are almost identical: 4.11 kWh per year for LCD,
+        4.16 for LCD (LED) and 4.00 for OLED. OLED is only about 4% lower. Most of the raw gap in Figure 3 comes from
+        screen size, not technology.</p>
+    </div>
+    <div class="question">
+      <h3><span class="tag">4</span>Does this hold at the same screen size?</h3>
+      <figure class="chart">
+        <div class="chart-slot"><img src="assets/img/charts/tech-3-same-size.png"
+            alt="Grouped bar chart of average annual energy use by size band and screen technology"></div>
+        <figcaption>Figure 5. Average kWh per year by screen technology, split by size band.</figcaption>
+      </figure>
+      <p class="insight">Energy rises steeply with size for every technology. At 33&ndash;65 inches the three
+        technologies are close (for example 315 kWh for LCD, 336 for LCD (LED) and 326 for OLED at 44&ndash;55 inches).
+        The gap only opens at very large sizes: at 76&ndash;100 inches OLED averages 714 kWh per year against 870 for
+        LCD (LED). OLED has no models up to 32 inches or at 66&ndash;75 inches, and the over-100-inch band has only 30
+        models (6 LCD), so treat those bars with care.</p>
+    </div>
+    <div class="question">
+      <h3><span class="tag">5</span>What about power used while the TV is on?</h3>
+      <figure class="chart">
+        <div class="chart-slot"><img src="assets/img/charts/tech-4-power.png"
+            alt="Box plot of in-use power in watts for each screen technology"></div>
+        <figcaption>Figure 6. In-use power (watts) by screen technology.</figcaption>
+      </figure>
+      <p class="insight">The pattern repeats: median in-use power is 76 W for LCD, 107 W for LCD (LED) and 113 W for
+        OLED. Per 100 cm&sup2; of screen it is almost the same for all three (about 1.05 to 1.08 W), so again the gap is
+        mostly screen size.</p>
+    </div>
+    <div class="question">
+      <h3><span class="tag">6</span>Do some technologies get better star ratings?</h3>
+      <figure class="chart">
+        <div class="chart-slot"><img src="assets/img/charts/tech-5-stars.png"
+            alt="Bar chart of the share of models with 5 stars or more for each screen technology"></div>
+        <figcaption>Figure 7. Share of models rated 5 stars or more, by technology.</figcaption>
+      </figure>
+      <p class="insight">68% of LCD models have 5 stars or more, against 59% of OLED and 54% of LCD (LED). Star ratings
+        are only a rough guide here, so use the kWh per year on the label to compare models.</p>
+    </div>
+
+    <h2 id="conclusion">Conclusion</h2>
+    <p><strong>Screen technology has only a small effect on a TV's energy use.</strong> LCD looks the most efficient
+      only because LCD TVs are smaller. At the same size, LCD, LCD (LED) and OLED use similar amounts of energy, with
+      OLED slightly lower on large screens. In-use power shows the same pattern. For shoppers: pick the size you need,
+      then compare the kWh per year on the energy label of models at that size.</p>
+  </main>
+  <footer class="site-footer">
+    <div class="inner">
+      <p>&copy; <span id="year">2026</span> Pham Anh &ndash; COS30045 Data Visualisation, Swinburne Vietnam.</p>
+      <p>Generative AI acknowledgement: AI was used to help draft the website structure, code, analysis and text. All
+        content was reviewed Pham Anh.</p>
+    </div>
+  </footer>
+</body>
+
+</html>

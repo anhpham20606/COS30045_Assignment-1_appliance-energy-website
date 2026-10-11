@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us | Appliance Energy Consumption Website</title>
+  <link rel="icon" type="image/png" href="assets/img/PowerIcon.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="logo" href="index.html" aria-label="Appliance Energy Consumption - Home"><img src="assets/img/PowerIcon.png" alt="Power logo"></a>
+    <ul>
+      <li><a class="nav-link" href="index.html">Home</a></li>
+      <li><a class="nav-link" href="televisions.html">Televisions</a></li>
+      <li><a class="nav-link" href="about.html" aria-current="page">About Us</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+<section class="hero">
+  <h1>About Us</h1>
+  <p>Who made this site, what it asks, and where the data comes from.</p>
+</section>
+
+<h2>The project</h2>
+<p>This website was built for COS30045 Data Visualisation (Demonstration 1) at Swinburne Vietnam. It asks one question: does the screen technology of a television (LCD, LCD (LED) or OLED) change its energy consumption? It uses only televisions currently available on the Australian market.</p>
+
+<h2>The author</h2>
+<p>Pham Anh - 105977992 &ndash; CS student, Swinburne Vietnam.</p>
+
+<h2>The data</h2>
+<div class="table-wrap">
+<table>
+  <tr><th>Item</th><th>Detail</th></tr>
+  <tr><td>Dataset</td><td>Energy rating data for labelled televisions (file: tv_2026_10_02.csv)</td></tr>
+  <tr><td>Source</td><td>Australian Government energy rating product registration database (GEMS). https://data.gov.au/data/dataset/energy-rating-for-household-appliances</td></tr>
+  <tr><td>Size</td><td>5,030 registered models and 32 columns; 4,839 models kept after filtering</td></tr>
+  <tr><td>Filters</td><td>Availability Status = Available, and sold in Australia (SoldIn contains &ldquo;Australia&rdquo;)</td></tr>
+  <tr><td>Main variables</td><td>Screen_Tech, labelled energy consumption (kWh/year), screen size and area, in-use power, star rating</td></tr>
+  <tr><td>Data dictionary</td><td>televisionsmay2015.docx</td></tr>
+  <tr><td>Tools</td><td>KNIME for filtering and cleaning</td></tr>
+</table>
+</div>
+
+<h2>Limitations</h2>
+<ul>
+  <li>Energy use is the labelled kWh per year, not measured use in a real home.</li>
+  <li>228 rows share a brand and model number with another row. They are kept as separate registrations.</li>
+  <li>There are few LCD models at very large sizes, so comparisons for 76 inches and above are less reliable.</li>
+</ul>
+
+<h2>Generative AI use</h2>
+<p>AI was used to help draft the page structure, CSS, JavaScript, the analysis and the text. The author reviewed and edited the output.</p>
+</main>
+<footer class="site-footer">
+  <div class="inner">
+    <p>&copy; <span id="year">2026</span> Pham Anh &ndash; COS30045 Data Visualisation, Swinburne Vietnam.</p>
+    <p>Generative AI acknowledgement: AI was used to help draft the website structure, code, analysis and text. All content was reviewed Pham Anh.</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,128 @@
+/* Appliance Energy Consumption Website - COS30045 Demonstration 1
+   Palette taken from the power logo */
+:root{
+  --cream:#fdf6dc;
+  --yellow:#f9e6a8;
+  --yellow-deep:#f1d27a;
+  --orange:#eba845;
+  --orange-dark:#9a5f10;
+  --brown:#7d6847;
+  --brown-dark:#4a3d28;
+  --white:#fffdf5;
+  --radius:10px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;font-size:1.0625rem;line-height:1.65;color:var(--brown-dark);background:var(--cream);display:flex;flex-direction:column;min-height:100vh}
+main{flex:1;width:100%;max-width:1600px;margin:0 auto;padding:2.5rem 4vw 3.5rem}
+h1,h2,h3{line-height:1.25;color:var(--brown-dark)}
+h1{font-size:2.5rem;margin:0 0 .5rem}
+h2{font-size:1.75rem;margin:2.5rem 0 .75rem;padding-bottom:.35rem;border-bottom:3px solid var(--yellow-deep)}
+h3{font-size:1.15rem;margin:1.5rem 0 .4rem}
+p{max-width:90ch}
+a{color:var(--orange-dark)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+
+/* Navigation */
+.site-header{background:var(--yellow);border-bottom:4px solid var(--brown);position:sticky;top:0;z-index:10}
+.nav{max-width:1600px;margin:0 auto;padding:.5rem 4vw;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.logo img{display:block;width:52px;height:52px}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:.35rem}
+.nav a.nav-link{display:block;padding:.55rem 1rem;border-radius:var(--radius);text-decoration:none;color:var(--brown-dark);font-weight:600;transition:background-color .2s,color .2s}
+.nav a.nav-link:hover{background:var(--orange);color:var(--brown-dark)}
+.nav a.nav-link[aria-current="page"]{background:var(--brown);color:var(--cream)}
+
+/* Hero */
+.hero{background:var(--yellow);border:2px solid var(--brown);border-radius:var(--radius);padding:3rem 3rem;margin-bottom:1rem}
+.hero p{font-size:1.2rem;margin:.25rem 0 0}
+.lead{font-size:1.1rem}
+
+/* Content blocks */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin:1rem 0}
+.box{background:var(--white);border:1px solid var(--brown);border-radius:var(--radius);padding:1rem 1.25rem}
+.box h3{margin-top:0}
+.note{background:var(--yellow);border-left:5px solid var(--orange);padding:.75rem 1rem;border-radius:0 var(--radius) var(--radius) 0;max-width:72ch}
+table{border-collapse:collapse;width:100%;background:var(--white);margin:1rem 0}
+th,td{border:1px solid var(--brown);padding:.5rem .7rem;text-align:left;vertical-align:top}
+th{background:var(--yellow-deep)}
+.table-wrap{overflow-x:auto}
+ol.steps{padding-left:1.25rem}
+ol.steps li{margin-bottom:.4rem}
+
+/* Chart placeholders */
+figure.chart{margin:1.25rem 0;background:var(--white);border:1px solid var(--brown);border-radius:var(--radius);padding:1rem}
+.chart-slot{min-height:380px;border:2px dashed var(--orange);border-radius:var(--radius);background:repeating-linear-gradient(45deg,var(--cream),var(--cream) 12px,#fbf0c8 12px,#fbf0c8 24px);display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;color:var(--brown)}
+.chart-slot img{max-width:100%;height:auto;display:block}
+figcaption{margin-top:.6rem;font-size:.95rem}
+.insight{margin:.5rem 0 0;font-style:italic;color:var(--brown)}
+
+/* Analysis charts: image fills the whole frame (workflow slot is unchanged) */
+.question .chart-slot:has(img){min-height:0;padding:0;border:0;background:none;display:block}
+.question .chart-slot img{width:100%;height:auto}
+.question figure.chart{margin:.5rem 0}
+
+/* Question cards */
+.question{background:var(--white);border:1px solid var(--brown);border-left:8px solid var(--orange);border-radius:var(--radius);padding:.25rem 1.25rem 1rem;margin:1.5rem 0}
+.tag{display:inline-block;background:var(--brown);color:var(--cream);font-size:.8rem;border-radius:20px;padding:.1rem .7rem;margin-right:.4rem}
+
+/* Storyboard */
+.storyboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1rem 0;padding:0;list-style:none}
+.panel{background:var(--white);border:2px solid var(--brown);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
+.panel .frame{min-height:150px;background:var(--yellow);border-bottom:2px solid var(--brown);display:flex;align-items:center;justify-content:center;text-align:center;padding:.75rem;color:var(--brown-dark);font-size:.9rem}
+.panel .frame img{max-width:100%;display:block}
+.panel .text{padding:.75rem 1rem}
+.panel h3{margin:0 0 .3rem;font-size:1.05rem}
+.panel p{margin:.2rem 0;font-size:.95rem}
+
+/* FAQ accordion */
+.accordion{margin:1rem 0}
+.accordion-item{border:1px solid var(--brown);border-radius:var(--radius);margin-bottom:.6rem;background:var(--white);overflow:hidden}
+.accordion-trigger{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;text-align:left;font:inherit;font-weight:600;color:var(--brown-dark);background:var(--yellow);border:0;padding:.85rem 1rem;cursor:pointer;transition:background-color .2s}
+.accordion-trigger:hover{background:var(--yellow-deep)}
+.accordion-trigger::after{content:"+";font-size:1.4rem;line-height:1;color:var(--orange-dark)}
+.accordion-trigger[aria-expanded="true"]::after{content:"\2212"}
+.accordion-panel{padding:.25rem 1rem 1rem}
+.accordion-panel[hidden]{display:none}
+
+/* Wide (laptop) layouts */
+@media (min-width:1000px){
+  .question .insight{font-size:1.05rem}
+  .storyboard{grid-template-columns:repeat(5,1fr)}
+  .panel .frame{min-height:200px}
+  .figure-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+}
+
+/* Footer */
+.site-footer{background:var(--brown);color:var(--cream);padding:1.25rem}
+.site-footer .inner{max-width:1600px;margin:0 auto;padding:0 4vw;font-size:.92rem}
+.site-footer p{margin:.2rem 0;max-width:none}
+
+@media (max-width:600px){
+  .nav{flex-wrap:wrap;justify-content:center}
+  h1{font-size:1.7rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto!important}
+}
+
+/* Added: country analysis, KNIME guide, storyboard page */
+.chart-slot.small{min-height:200px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin:1rem 0}
+.stat{background:var(--white);border:1px solid var(--brown);border-radius:var(--radius);padding:.75rem 1rem;text-align:center}
+.stat strong{display:block;font-size:1.8rem;color:var(--orange-dark)}
+.guide{background:var(--white);border:1px solid var(--brown);border-left:8px solid var(--orange);border-radius:var(--radius);padding:.25rem 1.25rem 1rem;margin:1.5rem 0}
+.guide ol{padding-left:1.25rem}
+.guide li{margin-bottom:.4rem}
+.scene{display:grid;grid-template-columns:1fr;gap:1rem;background:var(--white);border:2px solid var(--brown);border-radius:var(--radius);overflow:hidden;margin:1.5rem 0}
+.scene .frame{min-height:220px;background:var(--yellow);border-bottom:2px solid var(--brown);display:flex;flex-direction:column;gap:.75rem;align-items:center;justify-content:center;text-align:center;padding:1rem;color:var(--brown-dark);font-size:.95rem}
+.scene .frame img{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;background:var(--white);border:1px solid var(--brown);border-radius:6px}
+.scene .body{padding:.25rem 1.25rem 1.25rem}
+.scene h3{margin-top:.75rem}
+.scene dl{margin:0}
+.scene dt{font-weight:700;margin-top:.7rem;color:var(--orange-dark)}
+.scene dd{margin:.1rem 0 0}
+.swatch{display:inline-block;width:.9rem;height:.9rem;border-radius:3px;border:1px solid var(--brown-dark);vertical-align:-1px;margin-right:.25rem}
+@media (min-width:1000px){
+  .scene{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}
+  .scene .frame{border-bottom:0;border-right:2px solid var(--brown);min-height:100%}
+}

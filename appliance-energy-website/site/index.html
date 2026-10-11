@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home | Appliance Energy Consumption Website</title>
+  <link rel="icon" type="image/png" href="assets/img/PowerIcon.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="logo" href="index.html" aria-label="Appliance Energy Consumption - Home"><img src="assets/img/PowerIcon.png" alt="Power logo"></a>
+    <ul>
+      <li><a class="nav-link" href="index.html" aria-current="page">Home</a></li>
+      <li><a class="nav-link" href="televisions.html">Televisions</a></li>
+      <li><a class="nav-link" href="about.html">About Us</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+<section class="hero">
+  <h1>Appliance Energy Consumption</h1>
+  <p>Does the screen technology of a TV (LCD, LCD (LED) or OLED) change how much electricity it uses? This site answers that question with energy rating data for televisions sold in Australia.</p>
+</section>
+
+<h2>Why energy use matters</h2>
+<p class="lead">Household appliances are a large part of a home's electricity bill. Energy rating labels help shoppers compare products, but the label alone does not show how much of the difference comes from screen size and how much from screen technology.</p>
+<p>This site explores government energy rating data for the 4,839 televisions currently available on the Australian market. It focuses on one factor: screen technology.</p>
+
+<div class="grid">
+  <div class="box"><h3>4,839 models</h3><p>Televisions currently available in Australia: 3,940 LCD (LED), 607 LCD and 292 OLED.</p></div>
+  <div class="box"><h3>296 to 422 kWh</h3><p>Median yearly energy use looks very different between technologies (LCD to OLED) before size is considered.</p></div>
+  <div class="box"><h3>About 4%</h3><p>The gap between technologies once energy is measured per 100 cm&sup2; of screen.</p></div>
+</div>
+
+<div class="grid">
+  <div class="box">
+    <h3>Energy rating labels</h3>
+    <p>The label shows a star rating and the energy use in kWh per year, so you can compare similar products at a glance.</p>
+  </div>
+  <div class="box">
+    <h3>Running costs</h3>
+    <p>Multiply the kWh per year on the label by your electricity price per kWh to estimate the yearly running cost.</p>
+  </div>
+  <div class="box">
+    <h3>Explore the data</h3>
+    <p>Go to the <a href="televisions.html">Televisions page</a> to see how the data was cleaned and what it shows about screen technology.</p>
+  </div>
+</div>
+
+<h2>Frequently asked questions</h2>
+<div class="accordion">
+  <div class="accordion-item">
+    <h3><button class="accordion-trigger" id="faq-btn-1" aria-expanded="false" aria-controls="faq-panel-1">What does the star rating mean?</button></h3>
+    <div class="accordion-panel" id="faq-panel-1" role="region" aria-labelledby="faq-btn-1" hidden>
+      <p>More stars means the appliance is more energy efficient compared with others of a similar type. The label also shows the energy use in kWh per year.</p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h3><button class="accordion-trigger" id="faq-btn-2" aria-expanded="false" aria-controls="faq-panel-2">Does an OLED TV use more electricity than an LCD TV?</button></h3>
+    <div class="accordion-panel" id="faq-panel-2" role="region" aria-labelledby="faq-btn-2" hidden>
+      <p>At first glance yes: the median OLED TV uses 422 kWh per year against 296 for LCD. But OLED TVs are larger on average (65 against 51 inches). Per 100 cm&sup2; of screen the two are almost equal (4.00 and 4.11 kWh per year). See the <a href="televisions.html">Televisions page</a>.</p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h3><button class="accordion-trigger" id="faq-btn-3" aria-expanded="false" aria-controls="faq-panel-3">Is a bigger TV always more energy hungry?</button></h3>
+    <div class="accordion-panel" id="faq-panel-3" role="region" aria-labelledby="faq-btn-3" hidden>
+      <p>Mostly yes: screen size explains most of the difference in energy use. At the same size, LCD, LCD (LED) and OLED are fairly close.</p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h3><button class="accordion-trigger" id="faq-btn-4" aria-expanded="false" aria-controls="faq-panel-4">Where does the data come from?</button></h3>
+    <div class="accordion-panel" id="faq-panel-4" role="region" aria-labelledby="faq-btn-4" hidden>
+      <p>The data comes from the Australian energy rating product registration database (GEMS). See the <a href="about.html">About Us</a> page for details.</p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h3><button class="accordion-trigger" id="faq-btn-5" aria-expanded="false" aria-controls="faq-panel-5">How can I reduce my TV energy use?</button></h3>
+    <div class="accordion-panel" id="faq-panel-5" role="region" aria-labelledby="faq-btn-5" hidden>
+      <p>Choose a suitable size, compare kWh per year on the label for models of that size, and switch the TV off at the wall when not in use.</p>
+    </div>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="inner">
+    <p>&copy; <span id="year">2026</span> Pham Anh &ndash; COS30045 Data Visualisation, Swinburne Vietnam.</p>
+    <p>Generative AI acknowledgement: AI was used to help draft the website structure, code, analysis and text. All content was reviewed Pham Anh.</p>
+  </div>
+</footer>
+</body>
+</html>
